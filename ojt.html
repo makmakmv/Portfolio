@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OJT Experience Showcase | Mark Vincent Peligros</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="description"
+        content="Detailed OJT & Internship showcase of Mark Vincent N. Peligros, featuring hands-on accomplishments in technical support, community administration, video editing, and digital design.">
+    <meta name="keywords"
+        content="Mark Vincent Peligros OJT, IT Internship, Technical Support OJT, Community Moderation, Cavite Video Editor, Pateros Technological College OJT">
+    <meta name="author" content="Mark Vincent N. Peligros">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://markvincentpeligros.github.io/ojt">
+    <meta property="og:title" content="OJT Experience Showcase | Mark Vincent Peligros">
+    <meta property="og:description"
+        content="Explore the detailed technical support, community moderation, digital creatives, and video editing OJT accomplishments of Mark Vincent Peligros.">
+    <meta property="og:image" content="images/ojt_support.png">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Custom Stylesheet -->
+    <link rel="stylesheet" href="ojt.css">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="images/favicon.png">
+</head>
+
+<body>
+
+    <!-- Header Navigation -->
+    <header class="navbar" id="main-header">
+        <div class="nav-container">
+            <a href="index.html#hero" class="logo">M<span>V.</span></a>
+            <nav class="nav-menu">
+                <a href="index.html#experience" class="btn-nav-back" id="nav-btn-back">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="19" y1="12" x2="5" y2="12"></line>
+                        <polyline points="12 19 5 12 12 5"></polyline>
+                    </svg>
+                    Back to Home
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+
+        <!-- Hero Section -->
+        <section id="hero" class="hero-section">
+            <div class="hero-bg-overlay"></div>
+            <!-- Canvas for Interactive Constellation Nodes (Light theme adaptive) -->
+            <canvas id="particles-canvas" class="hero-particles light-canvas"></canvas>
+
+            <div class="container hero-content">
+                <div class="scroll-reveal reveal-up">
+                    <p class="hero-meta">OJT & INTERNSHIP SHOWCASE</p>
+                    <h1 class="hero-title">My On-the-Job Training <br><span class="accent-text">Experience
+                            Journey</span></h1>
+                    <p class="hero-lead">An inside look at what I accomplished, the tools I implemented, and the skills
+                        I refined during my academic internship program.</p>
+                    <div class="hero-buttons">
+                        <a href="#showcase" class="btn btn-primary" id="btn-explore-ojt">Explore Achievements</a>
+                        <a href="index.html#contact" class="btn btn-secondary" id="btn-contact-me">Get in Touch</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quick Stats Dashboard -->
+        <section class="stats-dashboard">
+            <div class="container">
+                <div class="stats-grid scroll-reveal reveal-up delay-1">
+                    <div class="stat-card">
+                        <div class="stat-num">6,000+</div>
+                        <div class="stat-label">Students Supported</div>
+                        <div class="stat-desc">Moderated & guided within large student groups</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-num">300+</div>
+                        <div class="stat-label">Technical Issues Solved</div>
+                        <div class="stat-desc">Troubleshooting, configs, and system support</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-num">30+</div>
+                        <div class="stat-label">Creative Designs</div>
+                        <div class="stat-desc">Banners, promotional materials & flyers</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-num">15+</div>
+                        <div class="stat-label">Videos Edited</div>
+                        <div class="stat-desc">Video post-production and media assets</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- OJT Pillars Showcase -->
+        <section id="showcase" class="section-padding">
+            <!-- Ambient Glows -->
+            <div class="ambient-glow glow-orange" style="top: 20%; left: -10%;"></div>
+            <div class="ambient-glow glow-blue" style="top: 50%; right: -10%;"></div>
+
+            <div class="container">
+                <div class="section-header text-center scroll-reveal reveal-up">
+                    <h2 class="section-title">Internship <span class="accent-text">Pillars & Roles</span></h2>
+                    <div class="title-underline"></div>
+                    <p class="section-subtitle">A detailed breakdown of key tasks, operational duties, and systems
+                        managed during my OJT.</p>
+                </div>
+
+                <div class="showcase-grid">
+                    <!-- Pillar 1: IT Support -->
+                    <div class="showcase-card scroll-reveal reveal-up">
+                        <div class="card-img-wrapper mini-gallery" data-pillar="support">
+                            <div class="mini-slides">
+                                <img src="images/ojt-zoom-support-01.jpg" alt="Online Zoom Support Webinar"
+                                    class="card-img mini-slide active"
+                                    data-lightbox-src="images/ojt-zoom-support-01.jpg"
+                                    data-lightbox-caption="Assisted users with device configurations and audio/video troubleshooting in Zoom.">
+                                <img src="images/ojt-discord-mod-01.jpg" alt="Remote Discord Support"
+                                    class="card-img mini-slide" data-lightbox-src="images/ojt-discord-mod-01.jpg"
+                                    data-lightbox-caption="Guided peers through software setup and remote network troubleshooting in Discord channels.">
+                            </div>
+                            <div class="card-overlay"></div>
+                            <span class="card-badge">IT Support</span>
+                            <button class="mini-arrow prev" aria-label="Previous Slide">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="2.5">
+                                    <polyline points="15 18 9 12 15 6"></polyline>
+                                </svg>
+                            </button>
+                            <button class="mini-arrow next" aria-label="Next Slide">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="2.5">
+                                    <polyline points="9 18 15 12 9 6"></polyline>
+                                </svg>
+                            </button>
+                            <div class="mini-dots">
+                                <span class="mini-dot active" data-index="0"></span>
+                                <span class="mini-dot" data-index="1"></span>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <h3><span>Pillar 01</span>Online User Support & Systems Help</h3>
+                            <p class="card-desc">Assisted students and users with technical issues remotely during the
+                                academic internship, ensuring smooth online communications and active problem
+                                resolution.</p>
+                            <div class="gallery-action-link-wrapper">
+                                <a href="#ojt-gallery" class="view-gallery-link" data-filter="zoom-support">View
+                                    captures in gallery →</a>
+                            </div>
+
+                            <ul class="card-details-list">
+                                <li>Troubleshed hardware, device configurations, and audio/video settings for online
+                                    webinars.</li>
+                                <li>Assisted students in navigating online learning rooms, voice lobbies, and network
+                                    portals.</li>
+                                <li>Maintained a high standard of professional communication, user assistance, and
+                                    structured call flow practices.</li>
+                                <li>Supported virtual operations and guided peers through system logins, software setup,
+                                    and remote configs.</li>
+                            </ul>
+
+                            <div class="card-tools">
+                                <h4>Tools & Environments Used</h4>
+                                <div class="tools-shelf">
+                                    <span class="tool-chip">Zoom Admin</span>
+                                    <span class="tool-chip">Discord Lobbies</span>
+                                    <span class="tool-chip">Remote Desktop</span>
+                                    <span class="tool-chip">System Configurations</span>
+                                    <span class="tool-chip">Troubleshooting Manuals</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Pillar 2: Community Moderation -->
+                    <div class="showcase-card scroll-reveal reveal-up delay-1">
+                        <div class="card-img-wrapper mini-gallery" data-pillar="community">
+                            <div class="mini-slides">
+                                <img src="images/ojt-community-admin-01.jpg" alt="Student Community Admin Dashboard"
+                                    class="card-img mini-slide active"
+                                    data-lightbox-src="images/ojt-community-admin-01.jpg"
+                                    data-lightbox-caption="Moderated online servers, keeping communication organized, secure, and helpful for 6,000+ students.">
+                                <img src="images/ojt-discord-mod-01.jpg" alt="Discord Bot Configurations"
+                                    class="card-img mini-slide" data-lightbox-src="images/ojt-discord-mod-01.jpg"
+                                    data-lightbox-caption="Configured bot integration triggers and role-based notification channels.">
+                            </div>
+                            <div class="card-overlay"></div>
+                            <span class="card-badge">Community Admin</span>
+                            <button class="mini-arrow prev" aria-label="Previous Slide">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="2.5">
+                                    <polyline points="15 18 9 12 15 6"></polyline>
+                                </svg>
+                            </button>
+                            <button class="mini-arrow next" aria-label="Next Slide">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="2.5">
+                                    <polyline points="9 18 15 12 9 6"></polyline>
+                                </svg>
+                            </button>
+                            <div class="mini-dots">
+                                <span class="mini-dot active" data-index="0"></span>
+                                <span class="mini-dot" data-index="1"></span>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <h3><span>Pillar 02</span>Large-Scale Community Moderation</h3>
+                            <p class="card-desc">Administered and moderated large online community spaces containing
+                                over 6,000 active students, keeping servers organized, secure, and helpful.</p>
+                            <div class="gallery-action-link-wrapper">
+                                <a href="#ojt-gallery" class="view-gallery-link" data-filter="discord-mod">View captures
+                                    in gallery →</a>
+                            </div>
+
+                            <ul class="card-details-list">
+                                <li>Managed active chat channels, structured role assignments, and bot moderation
+                                    triggers.</li>
+                                <li>Addressed student inquiries professionally, guiding them to appropriate resources.
+                                </li>
+                                <li>Maintained server safety standards, filtered spam, and enforced platform rules.</li>
+                                <li>Configured server notification channels to optimize peer announcement broadcasts and
+                                    details sharing.</li>
+                            </ul>
+
+                            <div class="card-tools">
+                                <h4>Tools & Environments Used</h4>
+                                <div class="tools-shelf">
+                                    <span class="tool-chip">Discord Server Admin</span>
+                                    <span class="tool-chip">Discord Bots</span>
+                                    <span class="tool-chip">Bot Integrations</span>
+                                    <span class="tool-chip">Community Architectures</span>
+                                    <span class="tool-chip">Conflict Resolution</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Pillar 3: Digital Creatives -->
+                    <div class="showcase-card scroll-reveal reveal-up">
+                        <div class="card-img-wrapper mini-gallery" data-pillar="creative">
+                            <div class="mini-slides">
+                                <img src="images/ojt-creative-design-01.jpg" alt="Digital Branding & Layout design"
+                                    class="card-img mini-slide active"
+                                    data-lightbox-src="images/ojt-creative-design-01.jpg"
+                                    data-lightbox-caption="Designed high-impact visual banners, promotional announcements, and graphic layouts.">
+                                <img src="images/ojt-team-collab-01.jpg" alt="Remote Team Branding Workspace"
+                                    class="card-img mini-slide" data-lightbox-src="images/ojt-team-collab-01.jpg"
+                                    data-lightbox-caption="Collaborated with team members to align visual styles and design guidelines.">
+                            </div>
+                            <div class="card-overlay"></div>
+                            <span class="card-badge">Creative Design</span>
+                            <button class="mini-arrow prev" aria-label="Previous Slide">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="2.5">
+                                    <polyline points="15 18 9 12 15 6"></polyline>
+                                </svg>
+                            </button>
+                            <button class="mini-arrow next" aria-label="Next Slide">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="2.5">
+                                    <polyline points="9 18 15 12 9 6"></polyline>
+                                </svg>
+                            </button>
+                            <div class="mini-dots">
+                                <span class="mini-dot active" data-index="0"></span>
+                                <span class="mini-dot" data-index="1"></span>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <h3><span>Pillar 03</span>Digital Creatives & Promotional Assets</h3>
+                            <p class="card-desc">Designed eye-catching flyers, announcements, and visual assets to
+                                improve engagement, online presence, and communication clarity within student spaces.
+                            </p>
+                            <div class="gallery-action-link-wrapper">
+                                <a href="#ojt-gallery" class="view-gallery-link" data-filter="creative-design">View
+                                    captures in gallery →</a>
+                            </div>
+
+                            <ul class="card-details-list">
+                                <li>Designed high-impact promotional banners for academic announcements and online
+                                    events.</li>
+                                <li>Created custom graphic cards, social media assets, and calendar layouts.</li>
+                                <li>Collaborated on branding assets and document templates for team operations.</li>
+                                <li>Optimized graphic formats to ensure clear scaling across discord channels, zoom
+                                    graphics, and spreadsheets.</li>
+                            </ul>
+
+                            <div class="card-tools">
+                                <h4>Tools & Environments Used</h4>
+                                <div class="tools-shelf">
+                                    <span class="tool-chip">Canva Pro</span>
+                                    <span class="tool-chip">Photoshop Tools</span>
+                                    <span class="tool-chip">Vector Illustration</span>
+                                    <span class="tool-chip">Digital Layouts</span>
+                                    <span class="tool-chip">Social Media Design</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Pillar 4: Video Production -->
+                    <div class="showcase-card scroll-reveal reveal-up delay-1">
+                        <div class="card-img-wrapper mini-gallery" data-pillar="video">
+                            <div class="mini-slides">
+                                <img src="images/ojt-video-editing-01.jpg" alt="Adobe Premiere Editing Timeline"
+                                    class="card-img mini-slide active"
+                                    data-lightbox-src="images/ojt-video-editing-01.jpg"
+                                    data-lightbox-caption="Assembled, cut, and post-produced instructional system walkthrough tutorials.">
+                                <img src="images/ojt-creative-design-01.jpg" alt="Video Layout & Overlays Design"
+                                    class="card-img mini-slide" data-lightbox-src="images/ojt-creative-design-01.jpg"
+                                    data-lightbox-caption="Designed high-quality video intros, outro cards, and graphical assets.">
+                            </div>
+                            <div class="card-overlay"></div>
+                            <span class="card-badge">Video Production</span>
+                            <button class="mini-arrow prev" aria-label="Previous Slide">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="2.5">
+                                    <polyline points="15 18 9 12 15 6"></polyline>
+                                </svg>
+                            </button>
+                            <button class="mini-arrow next" aria-label="Next Slide">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="2.5">
+                                    <polyline points="9 18 15 12 9 6"></polyline>
+                                </svg>
+                            </button>
+                            <div class="mini-dots">
+                                <span class="mini-dot active" data-index="0"></span>
+                                <span class="mini-dot" data-index="1"></span>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <h3><span>Pillar 04</span>Video Post-Production & Editing</h3>
+                            <p class="card-desc">Edited training tutorials, screen walk-throughs, and promotional video
+                                reels to support organizational branding and visual instructions.</p>
+                            <div class="gallery-action-link-wrapper">
+                                <a href="#ojt-gallery" class="view-gallery-link" data-filter="video-editing">View
+                                    captures in gallery →</a>
+                            </div>
+
+                            <ul class="card-details-list">
+                                <li>Cut, color-balanced, and post-produced video walkthroughs for platform systems.</li>
+                                <li>Assembled high-energy social media promotional reels and introductory loops.</li>
+                                <li>Cleaned up and synchronized audio commentaries, vocal voiceovers, and ambient
+                                    tracks.</li>
+                                <li>Rendered and compressed video assets matching specific online file size guidelines.
+                                </li>
+                            </ul>
+
+                            <div class="card-tools">
+                                <h4>Tools & Environments Used</h4>
+                                <div class="tools-shelf">
+                                    <span class="tool-chip">Adobe Premiere Pro</span>
+                                    <span class="tool-chip">CapCut Desktop</span>
+                                    <span class="tool-chip">Audio Engineering</span>
+                                    <span class="tool-chip">Walkthrough Tutorials</span>
+                                    <span class="tool-chip">Render Optimization</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Unified OJT Artifacts Gallery -->
+        <section id="ojt-gallery" class="section-padding section-alt-bg scroll-reveal reveal-up">
+            <div class="container">
+                <div class="section-header text-center">
+                    <h2 class="section-title">OJT Artifacts <span class="accent-text">Gallery</span></h2>
+                    <div class="title-underline"></div>
+                    <p class="section-subtitle">Browse through visual artifacts, moderation panels, and design assets
+                        compiled during my internship.</p>
+                </div>
+
+                <!-- Filter Chips Row -->
+                <div class="gallery-filters-wrapper">
+                    <div class="gallery-filters">
+                        <button class="filter-chip active" data-filter="all">All</button>
+                        <button class="filter-chip" data-filter="discord-mod">Discord Moderation</button>
+                        <button class="filter-chip" data-filter="zoom-support">Zoom Support</button>
+                        <button class="filter-chip" data-filter="community-admin">Community Admin</button>
+                        <button class="filter-chip" data-filter="creative-design">Creative Design</button>
+                        <button class="filter-chip" data-filter="video-editing">Video Editing</button>
+                        <button class="filter-chip" data-filter="team-collab">Team Collaboration</button>
+                    </div>
+                </div>
+
+                <!-- Gallery Grid -->
+                <div class="gallery-grid">
+                    <!-- Item 1: Discord Mod -->
+                    <div class="gallery-card" data-category="discord-mod"
+                        data-lightbox-src="images/ojt-discord-mod-01.jpg"
+                        data-lightbox-caption="Active moderation feed, chat logs, and safety rules enforcement in large student channels.">
+                        <div class="gallery-img-box">
+                            <img src="images/ojt-discord-mod-01.jpg" alt="Discord Moderation Dashboard">
+                            <div class="gallery-hover-overlay">
+                                <span class="gallery-zoom-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                        stroke="currentColor" stroke-width="2.5" class="svg-zoom">
+                                        <circle cx="11" cy="11" r="8"></circle>
+                                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                                        <line x1="11" y1="8" x2="11" y2="14"></line>
+                                        <line x1="8" y1="11" x2="14" y2="11"></line>
+                                    </svg>
+                                </span>
+                            </div>
+                            <span class="gallery-card-badge">Discord Mod</span>
+                        </div>
+                        <div class="gallery-card-caption">
+                            <h3>Discord Server Administration</h3>
+                            <p>Active moderation feed, chat logs, and safety rules enforcement.</p>
+                        </div>
+                    </div>
+
+                    <!-- Item 2: Zoom Support -->
+                    <div class="gallery-card" data-category="zoom-support"
+                        data-lightbox-src="images/ojt-zoom-support-01.jpg"
+                        data-lightbox-caption="Assisting webinars, troubleshooting participant configs, and optimizing audio-video flows.">
+                        <div class="gallery-img-box">
+                            <img src="images/ojt-zoom-support-01.jpg" alt="Zoom Remote Support Webinar">
+                            <div class="gallery-hover-overlay">
+                                <span class="gallery-zoom-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                        stroke="currentColor" stroke-width="2.5" class="svg-zoom">
+                                        <circle cx="11" cy="11" r="8"></circle>
+                                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                                        <line x1="11" y1="8" x2="11" y2="14"></line>
+                                        <line x1="8" y1="11" x2="14" y2="11"></line>
+                                    </svg>
+                                </span>
+                            </div>
+                            <span class="gallery-card-badge">Zoom Support</span>
+                        </div>
+                        <div class="gallery-card-caption">
+                            <h3>Zoom Operations Support</h3>
+                            <p>Assisting webinars, troubleshooting participant configs, and audio flows.</p>
+                        </div>
+                    </div>
+
+                    <!-- Item 3: Community Admin -->
+                    <div class="gallery-card" data-category="community-admin"
+                        data-lightbox-src="images/ojt-community-admin-01.jpg"
+                        data-lightbox-caption="Administered server configurations, roles, and automated notifications for 6,000+ students.">
+                        <div class="gallery-img-box">
+                            <img src="images/ojt-community-admin-01.jpg" alt="Student Community Admin Panel">
+                            <div class="gallery-hover-overlay">
+                                <span class="gallery-zoom-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                        stroke="currentColor" stroke-width="2.5" class="svg-zoom">
+                                        <circle cx="11" cy="11" r="8"></circle>
+                                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                                        <line x1="11" y1="8" x2="11" y2="14"></line>
+                                        <line x1="8" y1="11" x2="14" y2="11"></line>
+                                    </svg>
+                                </span>
+                            </div>
+                            <span class="gallery-card-badge">Community Admin</span>
+                        </div>
+                        <div class="gallery-card-caption">
+                            <h3>Community Metrics & Organization</h3>
+                            <p>Administered notification loops and general organization for 6,000+ members.</p>
+                        </div>
+                    </div>
+
+                    <!-- Item 4: Creative Design -->
+                    <div class="gallery-card" data-category="creative-design"
+                        data-lightbox-src="images/ojt-creative-design-01.jpg"
+                        data-lightbox-caption="Designing eye-catching banners, promotional announcements, and graphic layouts.">
+                        <div class="gallery-img-box">
+                            <img src="images/ojt-creative-design-01.jpg" alt="Academic Banner Layout in Canva">
+                            <div class="gallery-hover-overlay">
+                                <span class="gallery-zoom-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                        stroke="currentColor" stroke-width="2.5" class="svg-zoom">
+                                        <circle cx="11" cy="11" r="8"></circle>
+                                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                                        <line x1="11" y1="8" x2="11" y2="14"></line>
+                                        <line x1="8" y1="11" x2="14" y2="11"></line>
+                                    </svg>
+                                </span>
+                            </div>
+                            <span class="gallery-card-badge">Creative Design</span>
+                        </div>
+                        <div class="gallery-card-caption">
+                            <h3>Promotional Graphics & Layouts</h3>
+                            <p>High-engagement digital banners, templates, and social flyers designed for events.</p>
+                        </div>
+                    </div>
+
+                    <!-- Item 5: Video Editing -->
+                    <div class="gallery-card" data-category="video-editing"
+                        data-lightbox-src="images/ojt-video-editing-01.jpg"
+                        data-lightbox-caption="Editing tutorials, platform walk-throughs, and introductory visual reels.">
+                        <div class="gallery-img-box">
+                            <img src="images/ojt-video-editing-01.jpg" alt="Video Walkthrough post-production">
+                            <div class="gallery-hover-overlay">
+                                <span class="gallery-zoom-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                        stroke="currentColor" stroke-width="2.5" class="svg-zoom">
+                                        <circle cx="11" cy="11" r="8"></circle>
+                                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                                        <line x1="11" y1="8" x2="11" y2="14"></line>
+                                        <line x1="8" y1="11" x2="14" y2="11"></line>
+                                    </svg>
+                                </span>
+                            </div>
+                            <span class="gallery-card-badge">Video Editing</span>
+                        </div>
+                        <div class="gallery-card-caption">
+                            <h3>Tutorial Post-Production</h3>
+                            <p>Cut, synchronized, and color-tuned instructional screens and reels.</p>
+                        </div>
+                    </div>
+
+                    <!-- Item 6: Team Collab -->
+                    <div class="gallery-card" data-category="team-collab"
+                        data-lightbox-src="images/ojt-team-collab-01.jpg"
+                        data-lightbox-caption="Collaborated with teams in online environments, syncing workflows, documentation, and digital guides.">
+                        <div class="gallery-img-box">
+                            <img src="images/ojt-team-collab-01.jpg" alt="Virtual whiteboard and collaboration session">
+                            <div class="gallery-hover-overlay">
+                                <span class="gallery-zoom-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                        stroke="currentColor" stroke-width="2.5" class="svg-zoom">
+                                        <circle cx="11" cy="11" r="8"></circle>
+                                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                                        <line x1="11" y1="8" x2="11" y2="14"></line>
+                                        <line x1="8" y1="11" x2="14" y2="11"></line>
+                                    </svg>
+                                </span>
+                            </div>
+                            <span class="gallery-card-badge">Team Collab</span>
+                        </div>
+                        <div class="gallery-card-caption">
+                            <h3>Remote Collaboration Pipeline</h3>
+                            <p>Coordinated workflows, templates, and digital content guides in team lobbies.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Impact & Learnings -->
+        <section class="section-padding">
+            <div class="container">
+                <div class="impact-card scroll-reveal reveal-up">
+                    <span class="impact-quote-icon">“</span>
+                    <div class="impact-grid">
+                        <div class="impact-left">
+                            <h3>OJT Learnings & <br><span class="accent-text">Core Takeaways</span></h3>
+                            <p class="section-subtitle" style="margin-top: 5px;">How my internship shaped my IT
+                                perspective.</p>
+                        </div>
+                        <div class="impact-right">
+                            <p>My OJT was more than just completing technical tasks—it was an immersive lesson in online
+                                infrastructure administration, large-scale remote operations, and team coordination.
+                                Operating remote desks and moderation pipelines reinforced the importance of
+                                <strong>structured user support</strong>, <strong>professional call flows</strong>, and
+                                <strong>adaptable creative solutions</strong> in digital workspaces.
+                            </p>
+                            <p>Balancing technical system checks with visual graphic designs allowed me to bridge logic
+                                and creativity, preparing me for multifaceted IT roles.</p>
+
+                            <div class="impact-stats-row">
+                                <div class="impact-stat-item">
+                                    <h4>600+ Hours</h4>
+                                    <p>Hands-on Work</p>
+                                </div>
+                                <div class="impact-stat-item">
+                                    <h4>6,000+ Peers</h4>
+                                    <p>Active Support</p>
+                                </div>
+                                <div class="impact-stat-item">
+                                    <h4>100%</h4>
+                                    <p>On-Time Delivery</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <a href="index.html#hero" class="logo">M<span>V.</span></a>
+                <nav class="footer-nav">
+                    <ul>
+                        <li><a href="index.html#hero">Home</a></li>
+                        <li><a href="index.html#about">About</a></li>
+                        <li><a href="index.html#experience">Experience</a></li>
+                        <li><a href="index.html#skills">Skills</a></li>
+                        <li><a href="index.html#contact">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Mark Vincent N. Peligros. All rights reserved. OJT Showcase Extension.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Photo Lightbox Modal (Preview-Only, No Download) -->
+    <div id="photo-lightbox" class="modal-overlay">
+        <div class="modal-box lightbox-modal-box">
+            <button id="close-lightbox-btn" class="close-btn" aria-label="Close Lightbox">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2.5" class="close-icon">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+
+            <div class="lightbox-content-box">
+                <div class="lightbox-img-wrapper">
+                    <img id="lightbox-img" src="" alt="OJT Capture Preview">
+
+                    <button class="lightbox-arrow prev" aria-label="Previous Photo">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="3" class="arrow-svg">
+                            <polyline points="15 18 9 12 15 6"></polyline>
+                        </svg>
+                    </button>
+                    <button class="lightbox-arrow next" aria-label="Next Photo">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="3" class="arrow-svg">
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                    </button>
+                </div>
+
+                <div class="lightbox-info-pane">
+                    <span id="lightbox-badge" class="gallery-card-badge">Badge</span>
+                    <span id="lightbox-index" class="lightbox-index">1 of 6</span>
+                    <p id="lightbox-caption" class="lightbox-caption">Photo Caption details</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Adapt script.js logic -->
+    <script src="script.js"></script>
+</body>
+
+</html>
