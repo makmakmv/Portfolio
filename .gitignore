@@ -1,1 +1,19 @@
 .vercel
+
+# Ignore specific unused files in images/
+images/herovid.mp4
+images/ojt_video.png
+images/ojt_community.png
+images/ojt_creative.png
+images/ojt-team-collab-01.jpg
+
+# Ignore all jpg files in OJT photo
+images/OJT photo/*.jpg
+
+# Unignore the used ones
+!images/OJT photo/ojt_coding01.jpg
+!images/OJT photo/ojt_clean01.jpg
+!images/OJT photo/ojt_cctv01.jpg
+!images/OJT photo/ojt_fix01.jpg
+!images/OJT photo/ojt_setup01.jpg
+!images/OJT photo/ojt_rj01.jpg

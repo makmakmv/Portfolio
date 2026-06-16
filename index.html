@@ -71,17 +71,53 @@
 
         <!-- Hero Section -->
         <section id="hero" class="hero-section">
+            <!-- Vignette for cinematic framing -->
+            <div class="hero-vignette"></div>
+
+            <!-- Subtle ambient glow effects -->
+            <div class="hero-ambient-glow glow-orange"></div>
+            <div class="hero-ambient-glow glow-blue"></div>
+
             <div class="hero-bg-overlay"></div>
             <canvas id="particles-canvas" class="hero-particles"></canvas>
 
+            <!-- Radial glow behind headline -->
+            <div class="hero-headline-glow"></div>
+
+            <!-- Floating decorative glass elements -->
+            <div class="hero-floating-card float-left">
+                <div class="floating-card-inner">
+                    <span class="card-glow-dot"></span>
+                    <span class="card-icon"></span>
+                    <span>IT Infrastructure</span>
+                </div>
+            </div>
+            <div class="hero-floating-card float-right">
+                <div class="floating-card-inner">
+                    <span class="card-glow-dot"></span>
+                    <span class="card-icon"></span>
+                    <span>Operations Support</span>
+                </div>
+            </div>
+
             <div class="hero-content">
                 <p class="hero-greeting">WELCOME TO MY PORTFOLIO</p>
-                <h1 class="hero-title">I Am <span id="typewriter-text" class="accent-text"></span><span class="typewriter-cursor">|</span></h1>
-                <p class="hero-lead">IT Support Specialist with hands-on experience in hardware troubleshooting, network cabling, CCTV maintenance, technical support, and digital operations. Passionate about solving technical problems and improving user experiences through technology.</p>
+                <h1 class="hero-title">I Am <span id="typewriter-text" class="accent-text"></span><span
+                        class="typewriter-cursor">|</span></h1>
+                <p class="hero-lead">IT Support Specialist with hands-on experience in hardware troubleshooting, network
+                    cabling, CCTV maintenance, technical support, and digital operations. Passionate about solving
+                    technical problems and improving user experiences through technology.</p>
 
                 <div class="hero-buttons">
                     <a href="#experience" class="btn btn-primary" id="btn-view-work">View Experience</a>
-                    <a href="#contact" class="btn btn-secondary" id="btn-hire-me">Hire Me</a>
+                    <a href="public/resume.pdf" download="Mark_Vincent_Peligros_Resume.pdf" class="btn btn-secondary"
+                        id="btn-download-resume">
+                        Download Resume
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2.5" class="btn-icon">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3" />
+                        </svg>
+                    </a>
                 </div>
             </div>
 
@@ -108,7 +144,9 @@
                     <div class="about-card-wrapper scroll-reveal reveal-left">
                         <div class="about-profile-card">
                             <div class="profile-icon-box">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="svg-profile">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                                    stroke-linejoin="round" class="svg-profile">
                                     <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
                                     <circle cx="12" cy="7" r="4" />
                                 </svg>
@@ -136,18 +174,20 @@
                     <!-- Bio and Details -->
                     <div class="about-info scroll-reveal reveal-right">
                         <p class="about-paragraph">
-                            I am a detail-oriented <strong>Information Technology</strong> student with hands-on
-                            experience in technical support, hardware and software troubleshooting, online user
-                            assistance, and digital operations. I excel at resolving technical issues, assisting users
-                            through online platforms, maintaining accurate documentation, and supporting IT-related
-                            tasks.
+                            As a <strong>Bachelor of Science in Information Technology</strong> graduate, I specialize
+                            in resolving complex technical issues and optimizing digital infrastructure. During my
+                            academic internship, I managed remote and on-site support, software installations, and
+                            hardware troubleshooting for a student community of over 10,000 users. Operating across
+                            Zoom,
+                            Discord, and Facebook, I established robust assistance channels to maintain seamless daily
+                            operations.
                         </p>
                         <p class="about-paragraph">
-                            Beyond core IT support, I bring creative digital skills to the table, including video
-                            editing, digital content creation, and online community moderation. I enjoy operating in
-                            fast-paced environments where I can apply proper communication, basic call flow practices,
-                            and technical solutions to improve user support experiences and optimize workflow
-                            efficiency.
+                            Beyond core IT support, I leverage my background in online community moderation, content
+                            creation, and video editing to bridge the gap between technology and user experience. I am
+                            driven by a passion for diagnosing hardware anomalies, executing network cabling, and
+                            deploying software systems that directly resolve user pain points and streamline
+                            productivity.
                         </p>
 
                         <div class="personal-details-grid">
@@ -254,7 +294,7 @@
                         </div>
                     </div>
 
-                    <!-- Category 2: Digital Creatives & Content -->
+                    <!-- Category 2: Web & Creative Operations -->
                     <div class="skill-category-card scroll-reveal reveal-up delay-1">
                         <div class="card-header-icon">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
@@ -263,8 +303,9 @@
                                 <rect x="1" y="5" width="15" height="14" rx="2" ry="2" />
                             </svg>
                         </div>
-                        <h3>Digital & Creative Operations</h3>
-                        <p class="card-desc">Social media, video design, and promotional content production workflows.
+                        <h3>Web & Creative Operations</h3>
+                        <p class="card-desc">Web development, basic scripting, video editing, and promotional design
+                            workflows.
                         </p>
 
                         <div class="skills-list">
@@ -272,7 +313,9 @@
                             <div class="skill-tag-item">Video Editing</div>
                             <div class="skill-tag-item">Social Media Management</div>
                             <div class="skill-tag-item">Promotional Design</div>
-                            <div class="skill-tag-item">HTML & CSS Development</div>
+                            <div class="skill-tag-item">HTML5 & CSS3</div>
+                            <div class="skill-tag-item">JavaScript</div>
+                            <div class="skill-tag-item">PHP</div>
                         </div>
                     </div>
 
@@ -330,7 +373,7 @@
                                     <div class="metric-label">Hours Completed</div>
                                 </div>
                                 <div class="metric">
-                                    <div class="metric-num">6,000+</div>
+                                    <div class="metric-num">10,000+</div>
                                     <div class="metric-label">Students Supported</div>
                                 </div>
                                 <div class="metric">
@@ -358,7 +401,8 @@
                                 </svg>
                             </div>
                             <h4>Technical Support</h4>
-                            <p>Provided remote technical assistance, troubleshooting, system configuration support, and user guidance through online platforms.</p>
+                            <p>Provided remote technical assistance, troubleshooting, system configuration support, and
+                                user guidance through online platforms.</p>
                         </article>
 
                         <article class="support-card">
@@ -369,7 +413,8 @@
                                 </svg>
                             </div>
                             <h4>Community Administration</h4>
-                            <p>Managed and moderated large student communities, organized communication channels, handled inquiries, and maintained server operations.</p>
+                            <p>Managed and moderated large student communities, organized communication channels,
+                                handled inquiries, and maintained server operations.</p>
                         </article>
 
                         <article class="support-card">
@@ -380,7 +425,8 @@
                                 </svg>
                             </div>
                             <h4>Content & Media Production</h4>
-                            <p>Created promotional graphics, edited video testimonials, managed content workflows, and supported digital engagement initiatives.</p>
+                            <p>Created promotional graphics, edited video testimonials, managed content workflows, and
+                                supported digital engagement initiatives.</p>
                         </article>
 
                         <article class="support-card">
@@ -391,7 +437,8 @@
                                 </svg>
                             </div>
                             <h4>Web & Portfolio Development</h4>
-                            <p>Designed and developed responsive web projects while continuously improving UI, UX, performance, and accessibility.</p>
+                            <p>Designed and developed responsive web projects while continuously improving UI, UX,
+                                performance, and accessibility.</p>
                         </article>
                     </div>
                 </div>
@@ -468,29 +515,6 @@
                             <div class="cert-item">
                                 <div class="cert-icon-bullet">
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
-                                        stroke="currentColor" stroke-width="2" class="cloud-svg">
-                                        <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z" />
-                                    </svg>
-                                </div>
-                                <div class="cert-info">
-                                    <h4>Cloud and DevOps Basics</h4>
-                                    <p>Foundations of virtualization, cloud service architectures (AWS/Azure
-                                        structures), CI/CD fundamentals, and automated configurations.</p>
-                                    <button class="cert-view-btn" data-cert-src="/certificates/cloud-devops-basics.pdf">
-                                        View Certificate
-                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
-                                            stroke="currentColor" stroke-width="2.5" class="btn-icon">
-                                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-                                            <polyline points="15 3 21 3 21 9"></polyline>
-                                            <line x1="10" y1="14" x2="21" y2="3"></line>
-                                        </svg>
-                                    </button>
-                                </div>
-                            </div>
-
-                            <div class="cert-item">
-                                <div class="cert-icon-bullet">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
                                         stroke="currentColor" stroke-width="2" class="code-svg">
                                         <polyline points="16 18 22 12 16 6" />
                                         <polyline points="8 6 2 12 8 18" />
@@ -500,7 +524,7 @@
                                     <h4>AI Ready ASEAN Hour of Code Training</h4>
                                     <p>Coding literacy and machine learning models overview, focusing on technical
                                         upskilling and coding models.</p>
-                                    <button class="cert-view-btn" data-cert-src="/certificates/hour-of-code.pdf">
+                                    <button class="cert-view-btn" data-cert-src="public/certificates/asean.pdf">
                                         View Certificate
                                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
                                             stroke="currentColor" stroke-width="2.5" class="btn-icon">
@@ -568,6 +592,21 @@
                             </div>
                             <h3>Phone</h3>
                             <p><a href="tel:09267472387">0926-747-2387</a></p>
+                        </div>
+
+                        <!-- GitHub Card -->
+                        <div class="info-card">
+                            <div class="info-card-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" class="contact-svg">
+                                    <path
+                                        d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" />
+                                </svg>
+                            </div>
+                            <h3>GitHub</h3>
+                            <p><a href="https://github.com/makmakmv" target="_blank"
+                                    rel="noopener noreferrer">github.com/makmakmv</a></p>
                         </div>
                     </div>
 
@@ -654,7 +693,8 @@
                 </svg>
             </div>
             <h2>Message Sent Successfully!</h2>
-            <p>Thank you for reaching out, Mark Vincent will respond to your message as soon as possible. Messages are delivered directly to my email.</p>
+            <p>Thank you for reaching out, Mark Vincent will respond to your message as soon as possible. Messages are
+                delivered directly to my email.</p>
             <button id="close-modal-btn" class="btn btn-primary">Close</button>
         </div>
     </div>
@@ -674,6 +714,45 @@
             </div>
             <div class="cert-modal-body">
                 <iframe id="cert-iframe" src="" title="Certificate Preview" frameborder="0"></iframe>
+            </div>
+        </div>
+    </div>
+
+    <!-- IT Support Rush Easter Egg Modal -->
+    <div id="game-modal" class="modal-overlay game-modal-overlay">
+        <div class="modal-box game-modal-box">
+            <div class="game-modal-header">
+                <h2>IT Support Rush 🎮</h2>
+                <button id="close-game-btn" class="close-btn" aria-label="Close Game">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2.5" class="close-icon">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+            <div class="game-instructions">
+                <p>Press <kbd>SPACEBAR</kbd> or <kbd>↑</kbd> to jump over incoming IT support emergencies!</p>
+            </div>
+            <div class="game-container">
+                <canvas id="game-canvas" width="600" height="200"></canvas>
+
+                <!-- Game Over Screen -->
+                <div id="game-over-screen" class="game-screen hidden">
+                    <p class="game-over-text">Looks like the help desk got overwhelmed.</p>
+                    <p id="game-milestone-text" class="game-milestone-text"></p>
+                    <button id="restart-game-btn" class="btn btn-primary">Restart Shift</button>
+                </div>
+
+                <!-- Score Board -->
+                <div class="game-score-board">
+                    <span id="game-score">Issues Resolved: 0</span>
+                    <span id="game-high-score">Record: 0</span>
+                    <span id="coffee-indicator" class="coffee-indicator">☕ Coffee Boost: 0s</span>
+                </div>
+
+                <!-- Live Milestone Banner -->
+                <div id="game-milestone-banner" class="milestone-banner hidden">Milestone Message!</div>
             </div>
         </div>
     </div>

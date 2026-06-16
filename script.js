@@ -475,6 +475,87 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    // 1b. Creatives Showcase Filmstrip System (Pillar 3 Redesign)
+    const creativeFeatured = document.getElementById('creative-featured-img');
+    const filmstripItems = document.querySelectorAll('.filmstrip-item');
+    const filmstripPrev = document.querySelector('.filmstrip-arrow.prev');
+    const filmstripNext = document.querySelector('.filmstrip-arrow.next');
+    const filmstripTrack = document.querySelector('.filmstrip-track');
+    const creativeTitle = document.getElementById('creative-title');
+    const creativeDesc = document.getElementById('creative-desc');
+    
+    let creativeIdx = 0;
+    
+    if (creativeFeatured && filmstripItems.length > 0) {
+        function selectCreative(idx) {
+            filmstripItems[creativeIdx].classList.remove('active');
+            creativeIdx = (idx + filmstripItems.length) % filmstripItems.length;
+            const selectedItem = filmstripItems[creativeIdx];
+            selectedItem.classList.add('active');
+            
+            // Smoothly swap featured image and detail texts
+            creativeFeatured.style.opacity = '0';
+            creativeFeatured.style.transform = 'scale(0.98)';
+            
+            setTimeout(() => {
+                creativeFeatured.src = selectedItem.getAttribute('data-img');
+                creativeFeatured.alt = selectedItem.querySelector('img').alt;
+                creativeFeatured.setAttribute('data-lightbox-src', selectedItem.getAttribute('data-lightbox-src'));
+                creativeFeatured.setAttribute('data-lightbox-caption', selectedItem.getAttribute('data-lightbox-caption'));
+                
+                if (creativeTitle) creativeTitle.textContent = selectedItem.getAttribute('data-title');
+                if (creativeDesc) creativeDesc.textContent = selectedItem.getAttribute('data-caption');
+                
+                creativeFeatured.style.opacity = '1';
+                creativeFeatured.style.transform = 'scale(1)';
+            }, 150);
+            
+            // Center the selected item in the horizontally scrollable track
+            if (filmstripTrack) {
+                const trackWidth = filmstripTrack.clientWidth;
+                const itemLeft = selectedItem.offsetLeft;
+                const itemWidth = selectedItem.clientWidth;
+                filmstripTrack.scrollTo({
+                    left: itemLeft - (trackWidth / 2) + (itemWidth / 2),
+                    behavior: 'smooth'
+                });
+            }
+        }
+        
+        filmstripItems.forEach((item, idx) => {
+            item.addEventListener('click', () => selectCreative(idx));
+        });
+        
+        if (filmstripPrev) {
+            filmstripPrev.addEventListener('click', (e) => {
+                e.stopPropagation();
+                selectCreative(creativeIdx - 1);
+            });
+        }
+        if (filmstripNext) {
+            filmstripNext.addEventListener('click', (e) => {
+                e.stopPropagation();
+                selectCreative(creativeIdx + 1);
+            });
+        }
+        
+        // Connect click event to the existing Lightbox Modal
+        const featuredWrapper = creativeFeatured.closest('.featured-wrapper');
+        if (featuredWrapper) {
+            featuredWrapper.addEventListener('click', () => {
+                const items = Array.from(filmstripItems).map(item => {
+                    return {
+                        src: item.getAttribute('data-lightbox-src') || item.getAttribute('data-img'),
+                        caption: item.getAttribute('data-lightbox-caption') || '',
+                        badge: 'Content Creation',
+                        alt: item.querySelector('img').alt || ''
+                    };
+                });
+                openLightbox(items, creativeIdx);
+            });
+        }
+    }
+
     // 2. Lightbox Modal Preview System
     const lightboxModal = document.getElementById('photo-lightbox');
     const lightboxImg = document.getElementById('lightbox-img');
@@ -688,4 +769,647 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
+
+    // 5. IT Support Rush Easter Egg Mini-Game
+    (function() {
+        let clickCount = 0;
+        let lastClickTime = 0;
+        const clickLimit = 5;
+        const timeLimit = 3000; // 3 seconds
+
+        const navLogos = document.querySelectorAll('.navbar .logo');
+        const gameModal = document.getElementById('game-modal');
+        const closeGameBtn = document.getElementById('close-game-btn');
+        const restartGameBtn = document.getElementById('restart-game-btn');
+        const gameCanvas = document.getElementById('game-canvas');
+        const gameOverScreen = document.getElementById('game-over-screen');
+        const gameScoreText = document.getElementById('game-score');
+        const gameHighScoreText = document.getElementById('game-high-score');
+        const gameMilestoneText = document.getElementById('game-milestone-text');
+        const gameMilestoneBanner = document.getElementById('game-milestone-banner');
+        const coffeeIndicator = document.getElementById('coffee-indicator');
+        const gameOverText = document.querySelector('.game-over-text');
+
+        if (!gameCanvas || !gameModal) return;
+
+        const ctx = gameCanvas.getContext('2d');
+        
+        // Game state variables
+        let gameActive = false;
+        let isGameOver = false;
+        let score = 0;
+        let highScore = parseInt(localStorage.getItem('it_support_rush_highscore') || '0');
+        let speed = 4;
+        let gameFrame = 0;
+        let obstacles = [];
+        let powerUps = [];
+        let coffeeActive = false;
+        let coffeeEndTime = 0;
+        const coffeeDuration = 5000;
+        let inBossBattle = false;
+        let bossTriggered = false;
+        let bossBattleFrame = 0;
+        const bossBattleDurationFrames = 1200;
+        let boss = null;
+        let bossAttacks = [];
+        let nextObstacleSpawnFrame = 100;
+        let nextCoffeeSpawnFrame = 240;
+        let animationFrameId = null;
+
+        // Player (Runner MV Logo)
+        const player = {
+            x: 50,
+            y: 120, // Canvas height is 200, player size is 40x40
+            width: 40,
+            height: 40,
+            radius: 20,
+            yVelocity: 0,
+            gravity: 0.5,
+            jumpForce: -9.5,
+            isJumping: false,
+            groundY: 120,
+            
+            draw() {
+                // Glassmorphic circle
+                ctx.save();
+                ctx.beginPath();
+                ctx.arc(this.x + this.radius, this.y + this.radius, this.radius, 0, Math.PI * 2);
+                ctx.fillStyle = 'rgba(255, 255, 255, 0.1)';
+                ctx.fill();
+                ctx.lineWidth = 2.5;
+                ctx.strokeStyle = 'rgba(255, 87, 34, 0.85)';
+                // Add orange glow shadow
+                ctx.shadowBlur = 12;
+                ctx.shadowColor = 'rgba(255, 87, 34, 0.6)';
+                ctx.stroke();
+                ctx.restore();
+
+                // Text "MV"
+                ctx.save();
+                ctx.font = 'bold 15px Outfit, sans-serif';
+                ctx.fillStyle = '#ffffff';
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'middle';
+                // Drop shadow
+                ctx.shadowColor = 'rgba(0, 0, 0, 0.5)';
+                ctx.shadowBlur = 3;
+                ctx.shadowOffsetY = 1.5;
+                ctx.fillText('MV.', this.x + this.radius, this.y + this.radius);
+                ctx.restore();
+            },
+            
+            update() {
+                // Gravity physics
+                this.yVelocity += this.gravity;
+                this.y += this.yVelocity;
+                
+                // Check ground boundary
+                if (this.y >= this.groundY) {
+                    this.y = this.groundY;
+                    this.yVelocity = 0;
+                    this.isJumping = false;
+                }
+            },
+            
+            jump() {
+                if (!this.isJumping && !isGameOver) {
+                    this.yVelocity = this.jumpForce;
+                    this.isJumping = true;
+                }
+            }
+        };
+
+        const obstacleTypes = [
+            { emoji: '🖨️', name: 'Printer Error', width: 46, height: 40, y: 124 },
+            { emoji: '💻', name: 'BSOD Screen', width: 52, height: 36, y: 126 },
+            { emoji: '🔌', name: 'Network Failure', width: 38, height: 34, y: 130 },
+            { emoji: '🔑', name: 'Password Reset Request', width: 36, height: 34, y: 130 },
+            { emoji: '📹', name: 'Zoom Issue', width: 34, height: 30, y: 128 }
+        ];
+
+        const bossAttackTypes = [
+            { emoji: '🧾', width: 28, height: 32, y: 128, label: 'Paper Jam' },
+            { emoji: '⚠️', width: 34, height: 34, y: 110, label: 'Error Popup' },
+            { emoji: '🖨️', width: 40, height: 34, y: 126, label: 'Ink Warning' },
+            { emoji: '🔌', width: 30, height: 30, y: 118, label: 'Offline Alert' }
+        ];
+
+        class Obstacle {
+            constructor() {
+                const type = obstacleTypes[Math.floor(Math.random() * obstacleTypes.length)];
+                this.emoji = type.emoji;
+                this.name = type.name;
+                this.width = type.width + Math.floor(Math.random() * 6 - 3);
+                this.height = type.height;
+                this.x = gameCanvas.width + 30 + Math.random() * 90;
+                this.y = type.y;
+                this.passed = false;
+                this.speedOffset = Math.random() * 0.7;
+            }
+
+            draw() {
+                ctx.save();
+                ctx.font = `${Math.floor(this.height * 0.9)}px sans-serif`;
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'middle';
+                ctx.fillText(this.emoji, this.x + this.width / 2, this.y + this.height / 2);
+                ctx.restore();
+            }
+
+            update() {
+                this.x -= speed + this.speedOffset;
+                this.draw();
+            }
+        }
+
+        class CoffeeBoost {
+            constructor() {
+                this.width = 30;
+                this.height = 30;
+                this.x = gameCanvas.width + 40;
+                this.y = 88 + Math.random() * 18;
+                this.collected = false;
+            }
+
+            draw() {
+                ctx.save();
+                ctx.beginPath();
+                ctx.arc(this.x + this.width / 2, this.y + this.height / 2, this.width / 2, 0, Math.PI * 2);
+                ctx.fillStyle = 'rgba(255, 138, 34, 0.18)';
+                ctx.fill();
+                ctx.lineWidth = 2;
+                ctx.strokeStyle = 'rgba(255, 167, 38, 0.9)';
+                ctx.stroke();
+                ctx.restore();
+
+                ctx.save();
+                ctx.font = '20px sans-serif';
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'middle';
+                ctx.fillStyle = '#fff3e0';
+                ctx.fillText('☕', this.x + this.width / 2, this.y + this.height / 2);
+                ctx.restore();
+            }
+
+            update() {
+                this.x -= speed;
+                this.draw();
+            }
+        }
+
+        class Boss {
+            constructor() {
+                this.x = gameCanvas.width + 140;
+                this.y = 32;
+                this.width = 110;
+                this.height = 76;
+                this.targetX = 420;
+                this.speed = 1.2;
+                this.attackTimer = 0;
+            }
+
+            draw() {
+                ctx.save();
+                ctx.fillStyle = 'rgba(255, 87, 34, 0.12)';
+                ctx.fillRect(this.x, this.y, this.width, this.height);
+                ctx.strokeStyle = 'rgba(255, 87, 34, 0.7)';
+                ctx.lineWidth = 2;
+                ctx.strokeRect(this.x, this.y, this.width, this.height);
+                ctx.fillStyle = '#ffb74d';
+                ctx.font = '20px Outfit, sans-serif';
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'middle';
+                ctx.fillText('🖨️', this.x + this.width / 2, this.y + 22);
+                ctx.font = '12px Outfit, sans-serif';
+                ctx.fillStyle = '#ffffff';
+                ctx.fillText('PRINTER', this.x + this.width / 2, this.y + 48);
+                ctx.fillText('FROM HELL', this.x + this.width / 2, this.y + 62);
+                ctx.restore();
+            }
+
+            update() {
+                if (this.x > this.targetX) {
+                    this.x -= this.speed;
+                }
+                this.draw();
+            }
+        }
+
+        class BossAttack {
+            constructor(type) {
+                this.emoji = type.emoji;
+                this.width = type.width;
+                this.height = type.height;
+                this.x = boss.x - this.width * 0.5;
+                this.y = type.y;
+                this.speed = speed + 1.2;
+            }
+
+            draw() {
+                ctx.save();
+                ctx.font = `${Math.floor(this.height * 0.9)}px sans-serif`;
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'middle';
+                ctx.fillText(this.emoji, this.x + this.width / 2, this.y + this.height / 2);
+                ctx.restore();
+            }
+
+            update() {
+                this.x -= this.speed;
+                this.draw();
+            }
+        }
+
+        function collideCircleRect(cx, cy, radius, rx, ry, rw, rh) {
+            const closestX = Math.max(rx, Math.min(cx, rx + rw));
+            const closestY = Math.max(ry, Math.min(cy, ry + rh));
+            const dx = cx - closestX;
+            const dy = cy - closestY;
+            return (dx * dx + dy * dy) < (radius * radius);
+        }
+
+        function showGameMessage(message, extraClass = '') {
+            gameMilestoneBanner.textContent = message;
+            gameMilestoneBanner.className = `milestone-banner active ${extraClass}`.trim();
+            setTimeout(() => {
+                gameMilestoneBanner.classList.remove('active');
+                if (extraClass) {
+                    gameMilestoneBanner.classList.remove(extraClass);
+                }
+            }, 3200);
+        }
+
+        function activateCoffeeBoost() {
+            coffeeActive = true;
+            coffeeEndTime = performance.now() + coffeeDuration;
+            if (coffeeIndicator) {
+                coffeeIndicator.classList.add('active');
+            }
+            showGameMessage('☕ Coffee Boost Activated!', 'milestone-coffee');
+        }
+
+        function updateCoffeeIndicator() {
+            if (!coffeeActive || !coffeeIndicator) return;
+            const remainingMs = coffeeEndTime - performance.now();
+            if (remainingMs <= 0) {
+                coffeeActive = false;
+                coffeeIndicator.classList.remove('active');
+                return;
+            }
+            coffeeIndicator.textContent = `☕ Coffee Boost: ${Math.ceil(remainingMs / 1000)}s`;
+        }
+
+        function startBossBattle() {
+            inBossBattle = true;
+            boss = new Boss();
+            bossAttacks = [];
+            powerUps = [];
+            obstacles = [];
+            bossBattleFrame = 0;
+            showGameMessage('⚠ CRITICAL INCIDENT DETECTED ⚠', 'milestone-critical');
+        }
+
+        function completeBossBattle() {
+            inBossBattle = false;
+            boss = null;
+            bossAttacks = [];
+            speed += 1.2;
+            showGameMessage('You survived IT Support.', 'milestone-boss');
+            setTimeout(() => {
+                showGameMessage('🏆 Help Desk Legend', 'milestone-boss');
+            }, 1200);
+        }
+
+        function handleBossBattle() {
+            if (!boss) return;
+            boss.update();
+            boss.attackTimer++;
+            if (boss.attackTimer > Math.max(50, 100 - Math.floor(score / 125))) {
+                boss.attackTimer = 0;
+                bossAttacks.push(new BossAttack(bossAttackTypes[Math.floor(Math.random() * bossAttackTypes.length)]));
+            }
+            for (let i = bossAttacks.length - 1; i >= 0; i--) {
+                bossAttacks[i].update();
+                const collided = collideCircleRect(player.x + player.radius, player.y + player.radius, player.radius, bossAttacks[i].x, bossAttacks[i].y, bossAttacks[i].width, bossAttacks[i].height);
+                if (collided && !coffeeActive) {
+                    endGame('The Printer From Hell overwhelmed the help desk.');
+                    return;
+                }
+                if (bossAttacks[i].x + bossAttacks[i].width < 0) {
+                    bossAttacks.splice(i, 1);
+                }
+            }
+            bossBattleFrame++;
+            if (bossBattleFrame >= bossBattleDurationFrames && gameActive && !isGameOver) {
+                completeBossBattle();
+            }
+        }
+
+        function scheduleNextObstacle() {
+            nextObstacleSpawnFrame = gameFrame + 100 + Math.floor(Math.random() * 80);
+        }
+
+        function scheduleNextCoffee() {
+            nextCoffeeSpawnFrame = gameFrame + 240 + Math.floor(Math.random() * 100);
+        }
+
+        function spawnCoffee() {
+            if (coffeeActive || powerUps.length > 0 || inBossBattle) return;
+            if (Math.random() < 0.22) {
+                powerUps.push(new CoffeeBoost());
+            }
+            scheduleNextCoffee();
+        }
+
+        function spawnObstacle() {
+            obstacles.push(new Obstacle());
+            scheduleNextObstacle();
+        }
+
+        function maybeTriggerBoss() {
+            if (!bossTriggered && score >= 1000) {
+                bossTriggered = true;
+                startBossBattle();
+            }
+        }
+
+        function handlePowerUps() {
+            for (let i = powerUps.length - 1; i >= 0; i--) {
+                powerUps[i].update();
+                if (collideCircleRect(player.x + player.radius, player.y + player.radius, player.radius, powerUps[i].x, powerUps[i].y, powerUps[i].width, powerUps[i].height)) {
+                    activateCoffeeBoost();
+                    powerUps.splice(i, 1);
+                    continue;
+                }
+                if (powerUps[i].x + powerUps[i].width < 0) {
+                    powerUps.splice(i, 1);
+                }
+            }
+        }
+
+        function handleObstacles() {
+            if (gameFrame >= nextObstacleSpawnFrame) {
+                spawnObstacle();
+            }
+            if (gameFrame >= nextCoffeeSpawnFrame) {
+                spawnCoffee();
+            }
+            for (let i = obstacles.length - 1; i >= 0; i--) {
+                obstacles[i].update();
+                if (!obstacles[i].passed && obstacles[i].x + obstacles[i].width < player.x) {
+                    score += 10;
+                    obstacles[i].passed = true;
+                    speed += 0.14;
+                    gameScoreText.textContent = `Issues Resolved: ${score}`;
+                    checkMilestones();
+                    maybeTriggerBoss();
+                }
+                const playerCenterX = player.x + player.radius;
+                const playerCenterY = player.y + player.radius;
+                const obsCenterX = obstacles[i].x + obstacles[i].width / 2;
+                const obsCenterY = obstacles[i].y + obstacles[i].height / 2;
+                const dx = playerCenterX - obsCenterX;
+                const dy = playerCenterY - obsCenterY;
+                const distance = Math.sqrt(dx * dx + dy * dy);
+                if (distance < (player.radius + Math.min(obstacles[i].width, obstacles[i].height) / 2 + 6) && !coffeeActive) {
+                    endGame();
+                }
+                if (obstacles[i].x + obstacles[i].width < 0) {
+                    obstacles.splice(i, 1);
+                }
+            }
+            handlePowerUps();
+        }
+
+        function updatePlayerGlow() {
+            if (!coffeeActive) return;
+            ctx.save();
+            ctx.globalCompositeOperation = 'lighter';
+            ctx.beginPath();
+            ctx.arc(player.x + player.radius, player.y + player.radius, player.radius + 8, 0, Math.PI * 2);
+            ctx.fillStyle = 'rgba(255, 167, 38, 0.16)';
+            ctx.fill();
+            ctx.restore();
+        }
+
+        function drawGround() {
+            ctx.beginPath();
+            ctx.moveTo(0, 160);
+            ctx.lineTo(gameCanvas.width, 160);
+            ctx.strokeStyle = 'rgba(255, 255, 255, 0.1)';
+            ctx.lineWidth = 2;
+            ctx.stroke();
+        }
+
+        function animate() {
+            if (!gameActive) return;
+            ctx.clearRect(0, 0, gameCanvas.width, gameCanvas.height);
+            drawGround();
+            player.update();
+            if (inBossBattle) {
+                handleBossBattle();
+            } else {
+                handleObstacles();
+            }
+            if (coffeeActive) {
+                updateCoffeeIndicator();
+                updatePlayerGlow();
+            }
+            player.draw();
+            gameFrame++;
+            animationFrameId = requestAnimationFrame(animate);
+        }
+
+        function startGame() {
+            gameActive = true;
+            isGameOver = false;
+            score = 0;
+            speed = 4;
+            gameFrame = 0;
+            obstacles = [];
+            powerUps = [];
+            coffeeActive = false;
+            coffeeEndTime = 0;
+            inBossBattle = false;
+            bossTriggered = false;
+            bossBattleFrame = 0;
+            boss = null;
+            bossAttacks = [];
+            triggeredMilestones = {};
+            scheduleNextObstacle();
+            scheduleNextCoffee();
+            player.y = player.groundY;
+            player.yVelocity = 0;
+            player.isJumping = false;
+            gameScoreText.textContent = `Issues Resolved: 0`;
+            gameHighScoreText.textContent = `Record: ${highScore}`;
+            if (gameOverText) gameOverText.textContent = 'Looks like the help desk got overwhelmed.';
+            gameOverScreen.classList.add('hidden');
+            gameMilestoneBanner.classList.remove('active');
+            if (coffeeIndicator) coffeeIndicator.classList.remove('active');
+            ctx.clearRect(0, 0, gameCanvas.width, gameCanvas.height);
+            if (animationFrameId) {
+                cancelAnimationFrame(animationFrameId);
+            }
+            animate();
+        }
+
+        function endGame(message) {
+            gameActive = false;
+            isGameOver = true;
+            if (animationFrameId) {
+                cancelAnimationFrame(animationFrameId);
+            }
+            if (score > highScore) {
+                highScore = score;
+                localStorage.setItem('it_support_rush_highscore', highScore);
+                gameHighScoreText.textContent = `Record: ${highScore}`;
+            }
+            if (message && gameOverText) {
+                gameOverText.textContent = message;
+            }
+            let milestoneMsg = 'Try again to reach the milestones!';
+            if (score >= 1000) {
+                milestoneMsg = '🎉 Milestone Reached: IT Support Legend!';
+            } else if (score >= 500) {
+                milestoneMsg = '🎉 Milestone Reached: Help Desk Hero!';
+            } else if (score >= 250) {
+                milestoneMsg = '🎉 Milestone Reached: You\'re on Fire!';
+            } else if (score >= 100) {
+                milestoneMsg = '🎉 Milestone Reached: Great Troubleshooting!';
+            }
+            gameMilestoneText.textContent = milestoneMsg;
+            gameOverScreen.classList.remove('hidden');
+        }
+
+        function handleLogoClick(e) {
+            const now = Date.now();
+            if (now - lastClickTime > timeLimit) {
+                clickCount = 0;
+            }
+            clickCount++;
+            lastClickTime = now;
+            if (clickCount >= clickLimit) {
+                e.preventDefault();
+                clickCount = 0;
+                openGame();
+            }
+        }
+
+        // Attach click counts to all header logos
+        navLogos.forEach(logo => {
+            logo.addEventListener('click', handleLogoClick);
+        });
+        const milestones = [
+            { score: 100, message: 'Great Troubleshooting!', class: 'milestone-100' },
+            { score: 250, message: "You're on Fire!", class: 'milestone-250' },
+            { score: 500, message: 'Help Desk Hero!', class: 'milestone-500' },
+            { score: 1000, message: 'IT Support Legend!', class: 'milestone-1000' }
+        ];
+        let triggeredMilestones = {};
+
+        function showMilestone(milestone) {
+            if (triggeredMilestones[milestone.score]) return;
+            triggeredMilestones[milestone.score] = true;
+
+            gameMilestoneBanner.textContent = `${milestone.score} - ${milestone.message}`;
+            gameMilestoneBanner.className = `milestone-banner active ${milestone.class}`;
+            
+            setTimeout(() => {
+                gameMilestoneBanner.classList.remove('active');
+            }, 3000);
+        }
+
+        function checkMilestones() {
+            milestones.forEach(m => {
+                if (score >= m.score && !triggeredMilestones[m.score]) {
+                    showMilestone(m);
+                }
+            });
+        }
+
+        function openGame() {
+            gameModal.classList.add('active');
+            startGame();
+        }
+
+        function closeGame() {
+            gameActive = false;
+            if (animationFrameId) {
+                cancelAnimationFrame(animationFrameId);
+            }
+            gameModal.classList.remove('active');
+        }
+
+        // Close game button
+        closeGameBtn.addEventListener('click', closeGame);
+
+        // Restart game button
+        restartGameBtn.addEventListener('click', startGame);
+
+        // Jump handlers (spacebar/up-arrow/touch)
+        window.addEventListener('keydown', (e) => {
+            if (gameModal.classList.contains('active')) {
+                if (e.key === ' ' || e.key === 'ArrowUp') {
+                    e.preventDefault(); // prevent scrolling
+                    player.jump();
+                }
+            }
+        });
+
+        // Touch tap or click inside canvas container to jump
+        gameCanvas.addEventListener('touchstart', (e) => {
+            if (gameModal.classList.contains('active')) {
+                e.preventDefault();
+                player.jump();
+            }
+        });
+        
+        gameCanvas.addEventListener('mousedown', (e) => {
+            if (gameModal.classList.contains('active')) {
+                player.jump();
+            }
+        });
+
+        // Esc key close
+        window.addEventListener('keydown', (e) => {
+            if (gameModal.classList.contains('active') && e.key === 'Escape') {
+                closeGame();
+            }
+        });
+
+        restartGameBtn.addEventListener('click', startGame);
+
+        // Jump handlers (spacebar/up-arrow/touch)
+        window.addEventListener('keydown', (e) => {
+            if (gameModal.classList.contains('active')) {
+                if (e.key === ' ' || e.key === 'ArrowUp') {
+                    e.preventDefault(); // prevent scrolling
+                    player.jump();
+                }
+            }
+        });
+
+        // Touch tap or click inside canvas container to jump
+        gameCanvas.addEventListener('touchstart', (e) => {
+            if (gameModal.classList.contains('active')) {
+                e.preventDefault();
+                player.jump();
+            }
+        });
+        
+        gameCanvas.addEventListener('mousedown', (e) => {
+            if (gameModal.classList.contains('active')) {
+                player.jump();
+            }
+        });
+
+        // Esc key close
+        window.addEventListener('keydown', (e) => {
+            if (gameModal.classList.contains('active') && e.key === 'Escape') {
+                closeGame();
+            }
+        });
+    })();
 });
+
